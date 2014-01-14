@@ -1,0 +1,62 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+ul.links {
+	list-style-type:none;
+	padding-left:0;
+}
+ul.links a {
+	color:black;
+	text-decoration:none;
+	font-size: 4em;
+}
+ul.links a:hover {
+	color:#ccc;
+}
+
+.time, .date {
+	font-size: 3.5em;
+	text-align: right;
+}
+
+html, body, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Cardo', serif;
+}
+
+.content, .options {
+	margin-top:20px;
+}
+
+#removingLink, #resetLinks {
+	color:black;
+}
+#removingLink:hover, #resetLinks:hover {
+	color:red;
+	text-decoration: none;
+}
+
+#removeLink {
+	text-align:right;
+}
+
+.addNewLink {
+	width:600px;
+}
+
+.addNewLink input {
+	width:250px;
+}
+
+#newLink hr {
+	border-top-color: green;
+}
+
+#removeLink hr {
+	border-top-color: red;
+}
+
+#settings hr {
+	border-bottom-color: blue;
+}
