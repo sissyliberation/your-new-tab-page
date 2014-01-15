@@ -1,11 +1,35 @@
 $(document).ready(function(){
 
+	function Link(link,name) {
+		this.link = link;
+		this.name = name;
+	}
+	var links = [];
+	if($.cookie('user_saved')=="true") {
+		console.log('this');
+		var tmp = $.cookie();
+		console.log(tmp);
+	}
+	// this is if you are using it for the first time
+	else { 
+		console.log('new user');
+		$.cookie('user_saved','true', {expires:365, path:'/'});
+		$.cookie("Gmail","http://mail.google.com", {expires:365, path:'/'});
+		$.cookie("Facebook","http://facebook.com", "Facebook", {expires:365, path:'/'});
+		$.cookie("Twitter","http://twitter.com", "Twitter", {expires:365, path:'/'});
+		console.log($.cookie());
+	}
+
 	var isRemoved = true;
 
+	//display links here
+	$.each($.cookie(), function(name, url) {
+		if(name!='user_saved') {
+			$('.links').append("<li><a href='"+url+"'>"+name+"</a></li>");	
+		}
+	});
+
 	$('.options').hide();
-	$('.links').append("<li><a href='http://mail.google.com'>Gmail</a></li>",
-		"<li><a href='http://facebook.com'>Facebook</ama></li>",
-		"<li><a href='http://twitter.com'>Twitter</a></li>");
 	$('#addLinkBtn').on( "click", function() {
 		if($('#newLink').is(':visible')) {
 			$('.options').hide();
@@ -13,13 +37,10 @@ $(document).ready(function(){
 		else if( $('#removeLink').is(':visible') || $('.options').is(':hidden') ){
 			$('.options').show();
 			$('#newLink').show();
-			$('#removeLink').hide();
-			
+			$('#removeLink').hide();	
 		}
-
 	});
 	$('#removeLinkBtn').on( "click", function() {
-
 		if($('#removeLink').is(':visible')) {
 			$('.options').hide();
 		}
@@ -29,9 +50,6 @@ $(document).ready(function(){
 			$('#removeLink').show();
 			$('#whattodo').text('');
 		}
-
-
-
 		$('ul.links a:hover').css("color","#ccc");
 		isRemoved = !isRemoved;
 		if(isRemoved) {
@@ -40,7 +58,6 @@ $(document).ready(function(){
 				function() {$(this).css("color","black");}
 			);
 		}
-
 	});
 	
 	$('#removingLink').on( "click", function() {
@@ -51,6 +68,8 @@ $(document).ready(function(){
 		);
 		$('ul.links a').on("click",function(e){
 			e.preventDefault();
+			var tmp = $(this).text();
+			console.log(tmp);
 			$(this).remove();
 		});
 	});
@@ -86,5 +105,4 @@ $(document).ready(function(){
 	// 	}
 	// 	$('.time').text(d.getHours()+":"+minutes+":"+seconds);
 	// },1000);
-
 });
