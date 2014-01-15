@@ -13,10 +13,10 @@ $(document).ready(function(){
 	// this is if you are using it for the first time
 	else { 
 		console.log('new user');
-		$.cookie('user_saved','true', {expires:365, path:'/'});
-		$.cookie("Gmail","http://mail.google.com", {expires:365, path:'/'});
-		$.cookie("Facebook","http://facebook.com", "Facebook", {expires:365, path:'/'});
-		$.cookie("Twitter","http://twitter.com", "Twitter", {expires:365, path:'/'});
+		$.cookie('user_saved','true', {expires:365});
+		$.cookie("Gmail","http://mail.google.com", {expires:365});
+		$.cookie("Facebook","http://facebook.com", "Facebook", {expires:365});
+		$.cookie("Twitter","http://twitter.com", "Twitter", {expires:365});
 		console.log($.cookie());
 	}
 
@@ -68,8 +68,8 @@ $(document).ready(function(){
 		);
 		$('ul.links a').on("click",function(e){
 			e.preventDefault();
-			var tmp = $(this).text();
-			console.log(tmp);
+			var tmp_txt = $(this).text();
+			$.removeCookie(tmp_txt);
 			$(this).remove();
 		});
 	});
