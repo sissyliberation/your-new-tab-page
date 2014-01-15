@@ -79,12 +79,13 @@ $(document).ready(function(){
 		var name = $('.addNewLink input[placeholder="Name"]').val();
 		var url = $('.addNewLink input[placeholder="URL"]').val();
 		if(name!= "" && url != "") {
-			if(name.substr(0,4) != "http") {
-				$('ul.links').append("<li><a href='http://"+url+"'>"+name+"</a></li>");
+			if(url.substr(0,4) != "http") {
+				url='http://'+url;
 			}
-			else {
-				$('ul.links').append("<li><a href='"+url+"'>"+name+"</a></li>");
-			}
+			$('ul.links').append("<li><a href='"+url+"'>"+name+"</a></li>");
+			$.cookie(name,url);
+			$('.addNewLink input[placeholder="Name"]').val('');
+			$('.addNewLink input[placeholder="URL"]').val('');
 		}
 	});
 
