@@ -1,10 +1,22 @@
 {
   "name": "Your New Tab Page",
-  "description": "Overrides the new tab page on Chrome with a more elegant and simple design",
+  "description": "Overrides the new tab page on Chrome with a more elegant and simple design.",
   "version": "0.2",
+  "manifest_version": 2,
   "incognito": "split",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
-  "manifest_version": 2
+  // ,"icons" : {
+  //   "128" : "icon_128.png",
+  //    "48" : "icon_48.png",
+  //    "16" : "blank.gif"
+  // },
+  "background" : {
+    "scripts" : ["includes/jquery-1.10.2.min.js", "includes/jquery.storageapi.min.js", "includes/bootstrap.min.js", "includes/ready.js"]
+  },
+  "permissions" : [
+    "http://query.yahooapis.com/"
+  ]
+
 }
