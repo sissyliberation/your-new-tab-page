@@ -29,7 +29,7 @@ function addingLinkHandler(e) {
 			url='http://'+url;
 		}
 		$('ul.links').append("<li><a href='"+url+"'>"+name+"</a></li>");
-		// $.cookie(name,url);
+		localStorage.setItem(name,url);
 		$('.addNewLink input[placeholder="Name"]').val('');
 		$('.addNewLink input[placeholder="URL"]').val('');
 	}
@@ -66,19 +66,17 @@ function removingLinkHandler(e) {
 	$('ul.links a').on("click",function(e){
 		e.preventDefault();
 		var tmp_txt = $(this).text();
-		// $.removeCookie(tmp_txt);
+		localStorage.removeItem(tmp_txt);
 		$(this).remove();
 	});
 }
 
 function resetLinksHandler(e) {
 	e.preventDefault();
+	console.log('this is it');
 	var sure = confirm("Are you sure you want to reset everything?");
 	if(sure==true) {
-		// $.removeCookie('user_saved', {path:'/'});
-		// $.each($.cookie(), function(name, url) {
-		// 	$.removeCookie(name);
-		// });
+		localStorage.clear();
 		location.reload();
 	}
 }

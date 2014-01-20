@@ -13,9 +13,10 @@
   //    "16" : "blank.gif"
   // },
   "background" : {
-    "scripts" : ["includes/jquery-1.10.2.min.js", "includes/jquery.storageapi.min.js", "includes/bootstrap.min.js", "includes/ready.js"]
+    "scripts" : ["includes/jquery-1.10.2.min.js", "includes/bootstrap.min.js", "includes/events.js", "includes/ready.js"]
   },
   "permissions" : [
+    "topSites",
     "http://query.yahooapis.com/"
   ]
 

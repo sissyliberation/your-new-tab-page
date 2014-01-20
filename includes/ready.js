@@ -2,25 +2,23 @@
 $(document).ready(function(){
 
 	// this is if you are using it for the first time
-	// if($.cookie('user_saved')!="true") { 
-	// 	$.cookie('user_saved','true', {expires:365});
-	// 	$.cookie("Gmail","http://mail.google.com", {expires:365});
-	// 	$.cookie("Facebook","http://facebook.com", "Facebook", {expires:365});
-	// 	$.cookie("Twitter","http://twitter.com", "Twitter", {expires:365});
-	// }
+	if( localStorage.getItem("user_saved")!="true") { 
+		localStorage.setItem('user_saved','true');
+		localStorage.setItem("Gmail","http://mail.google.com");
+		localStorage.setItem("Facebook","http://facebook.com", "Facebook");
+		localStorage.setItem("Twitter","http://twitter.com", "Twitter");
+	}
 
 	// initializing conditions here
-
 	$('.options').hide();
 
 	//display links here
-	// $.each($.cookie(), function(name, url) {
-	// 	if(name!='user_saved') {
-	// 		$('.links').append("<li><a href='"+url+"'>"+name+"</a></li>");	
-	// 	}
-	// });
-
-
+	for (var i = 0; i < localStorage.length; ++i) {
+		var tmp = localStorage.key(i);
+		if(tmp!="user_saved") {
+			$('.links').append("<li><a href='"+localStorage.getItem(tmp)+"'>"+tmp+"</a></li>");
+		}
+	}
 
 	// date stuff
 	var weekday=["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -40,4 +38,7 @@ $(document).ready(function(){
 	// 	}
 	// 	$('.time').text(d.getHours()+":"+minutes+":"+seconds);
 	// },1000);
+
+	// $('body').css('background-color','black');
+	// $('h1,h2,h3,h4,h5,h6,p,a,input,span').css('color','white');
 });
