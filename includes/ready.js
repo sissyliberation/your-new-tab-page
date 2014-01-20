@@ -1,35 +1,28 @@
+
 $(document).ready(function(){
 
 	// this is if you are using it for the first time
-	if($.cookie('user_saved')!="true") { 
-		$.cookie('user_saved','true', {expires:365});
-		$.cookie("Gmail","http://mail.google.com", {expires:365});
-		$.cookie("Facebook","http://facebook.com", "Facebook", {expires:365});
-		$.cookie("Twitter","http://twitter.com", "Twitter", {expires:365});
-	}
+	// if($.cookie('user_saved')!="true") { 
+	// 	$.cookie('user_saved','true', {expires:365});
+	// 	$.cookie("Gmail","http://mail.google.com", {expires:365});
+	// 	$.cookie("Facebook","http://facebook.com", "Facebook", {expires:365});
+	// 	$.cookie("Twitter","http://twitter.com", "Twitter", {expires:365});
+	// }
 
 	// initializing conditions here
-	var isRemoved = true;
+
 	$('.options').hide();
 
 	//display links here
-	$.each($.cookie(), function(name, url) {
-		if(name!='user_saved') {
-			$('.links').append("<li><a href='"+url+"'>"+name+"</a></li>");	
-		}
-	});
+	// $.each($.cookie(), function(name, url) {
+	// 	if(name!='user_saved') {
+	// 		$('.links').append("<li><a href='"+url+"'>"+name+"</a></li>");	
+	// 	}
+	// });
 
-	// adding link
-	$('#addLinkBtn').on( "click", function() {
-		if($('#newLink').is(':visible')) {
-			$('.options').hide();
-		}
-		else if( $('#removeLink').is(':visible') || $('.options').is(':hidden') ){
-			$('.options').show();
-			$('#newLink').show();
-			$('#removeLink').hide();	
-		}
-	});
+
+
+
 	$('#addingLink').on("click",function(e){
 		e.preventDefault();
 		var name = $('.addNewLink input[placeholder="Name"]').val();
@@ -39,32 +32,13 @@ $(document).ready(function(){
 				url='http://'+url;
 			}
 			$('ul.links').append("<li><a href='"+url+"'>"+name+"</a></li>");
-			$.cookie(name,url);
+			// $.cookie(name,url);
 			$('.addNewLink input[placeholder="Name"]').val('');
 			$('.addNewLink input[placeholder="URL"]').val('');
 		}
 	});
 
-	// remove Link
-	$('#removeLinkBtn').on( "click", function() {
-		if($('#removeLink').is(':visible')) {
-			$('.options').hide();
-		}
-		else if( $('#newLink').is(':visible') || $('.options').is(':hidden')  ) {
-			$('.options').show();
-			$('#newLink').hide();
-			$('#removeLink').show();
-			$('#whattodo').text('');
-		}
-		$('ul.links a:hover').css("color","#ccc");
-		isRemoved = !isRemoved;
-		if(isRemoved) {
-			$('ul.links a').hover(
-				function() {$(this).css("color","#ccc");},
-				function() {$(this).css("color","black");}
-			);
-		}
-	});
+
 	$('#removingLink').on( "click", function() {
 		$('#whattodo').text('Click on one of the links below to remove it.');
 		$('ul.links a').hover(
@@ -74,7 +48,7 @@ $(document).ready(function(){
 		$('ul.links a').on("click",function(e){
 			e.preventDefault();
 			var tmp_txt = $(this).text();
-			$.removeCookie(tmp_txt);
+			// $.removeCookie(tmp_txt);
 			$(this).remove();
 		});
 	});
@@ -83,10 +57,10 @@ $(document).ready(function(){
 	$('#resetLinks').on("click",function() {
 		var sure = confirm("Are you sure you want to reset everything?");
 		if(sure==true) {
-			$.removeCookie('user_saved', {path:'/'});
-			$.each($.cookie(), function(name, url) {
-				$.removeCookie(name);
-			});
+			// $.removeCookie('user_saved', {path:'/'});
+			// $.each($.cookie(), function(name, url) {
+			// 	$.removeCookie(name);
+			// });
 			location.reload();
 		}
 	});
