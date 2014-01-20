@@ -11,9 +11,8 @@ This is still a work in progress.
 
 How to use
 -----------
-1. Make sure your browser has JavaScript and cookies enabled. 
-2. Make [this](http://yvescourtois.com/your-new-tab-page/) your browser's homepage.
-3. Edit and enjoy the cleanest browser homepage you've seen.
+1. Install [this](https://chrome.google.com/webstore/detail/your-new-tab-page/daeegpekhhgennllidlchmpaamfjhnfk) Chrome Extension.
+2. Edit and enjoy the cleanest browser homepage you've seen.
 
 To Do
 -----------
