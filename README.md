@@ -18,4 +18,5 @@ To Do
 -----------
 1. Add weather for your region. 
 2. Being able to drag-and-drop to sort links.
+3. Make your current Top Sites default links. 
 4. Ability to customize for a light or dark theme.
