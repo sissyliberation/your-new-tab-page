@@ -1,12 +1,19 @@
 
 $(document).ready(function(){
+	
 
 	// this is if you are using it for the first time
-	if( localStorage.getItem("user_saved")!="true") { 
+	if( localStorage.getItem("user_saved")!="true") {
 		localStorage.setItem('user_saved','true');
-		localStorage.setItem("Gmail","http://mail.google.com");
-		localStorage.setItem("Facebook","http://facebook.com", "Facebook");
-		localStorage.setItem("Twitter","http://twitter.com", "Twitter");
+		chrome.topSites.get(function(info) {
+			var num = 8;
+			if (info.length < 8) {
+				num = info.length;
+			}
+			for(var i=0; i < num; ++i) {
+				localStorage.setItem(info[i].title.toLowerCase(), info[i].url);
+			}
+		});
 	}
 
 	// initializing conditions here
@@ -41,4 +48,5 @@ $(document).ready(function(){
 
 	// $('body').css('background-color','black');
 	// $('h1,h2,h3,h4,h5,h6,p,a,input,span').css('color','white');
+
 });
