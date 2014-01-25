@@ -1,7 +1,6 @@
 
 $(document).ready(function(){
 	
-
 	// this is if you are using it for the first time
 	if( localStorage.getItem("user_saved")!="true") {
 		localStorage.setItem('user_saved','true');
@@ -19,10 +18,11 @@ $(document).ready(function(){
 	// initializing conditions here
 	$('.options').hide();
 
+	
 	//display links here
 	for (var i = 0; i < localStorage.length; ++i) {
 		var tmp = localStorage.key(i);
-		if(tmp!="user_saved") {
+		if(tmp!="user_saved" && tmp!="font-color" && tmp!="background-color") {
 			$('.links').append("<li><a href='"+localStorage.getItem(tmp)+"'>"+tmp+"</a></li>");
 		}
 	}
@@ -46,7 +46,14 @@ $(document).ready(function(){
 	// 	$('.time').text(d.getHours()+":"+minutes+":"+seconds);
 	// },1000);
 
-	// $('body').css('background-color','black');
-	// $('h1,h2,h3,h4,h5,h6,p,a,input,span').css('color','white');
+	if(localStorage.getItem("font-color")) {
+		$('h1,h2,h3,h4,h5,h6,p,a,input,span').css('color',localStorage.getItem("font-color"));	
+	}
+	if(localStorage.getItem("background-color")) {
+		$('body').css('background-color', localStorage.getItem("background-color"));	
+	}
 
+
+
+	
 });

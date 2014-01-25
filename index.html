@@ -60,8 +60,24 @@
         <hr>
         <span id="whattodo" style="float:left;"></span>
         <span id="description">Choose an option: </span>
-        <a id="removingLink">Remove a Link</a>
-        <a id="resetLinks">Clear All</a>
+        <a id="removingLink">[Remove a Link]</a>
+        <a id="resetLinks">[Clear All]</a>
+      </div>
+      <div class="col-md-12" id="settingsLink">
+        <hr>
+        <span style="display:inline-block">Change your settings</span>
+        <form class="navbar-form navbar-right changeFontColor" role="form">
+          <div class="form-group">
+            <input type="text" placeholder="font color" class="form-control">
+          </div>
+          <button class="btn" id="changingFontColor">+</button>
+        </form>
+        <form class="navbar-form navbar-right changeBackgroundColor" role="form">
+          <div class="form-group">
+            <input type="text" placeholder="background color" class="form-control">
+          </div>
+          <button class="btn" id="changingBackgroundColor">+</button>
+        </form>
       </div>
     </div>
 
@@ -77,6 +93,7 @@
       <div class="col-md-8 col-sm-8">
          <p class="date"></p>
          <!-- <p class="time"></p> -->
+         <div class="bookmarks"></div>
      </div>
     </div>
 

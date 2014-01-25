@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("removeLinkBtn").addEventListener('click',removeLinkBtnHandler);
 	document.getElementById("removingLink").addEventListener('click',removingLinkHandler);
 	document.getElementById("resetLinks").addEventListener('click',resetLinksHandler);
+	document.getElementById("settingsBtn").addEventListener('click',settingsBtnHandler);
+	document.getElementById("changingFontColor").addEventListener('click',changingFontColorHandler);
+	document.getElementById("changingBackgroundColor").addEventListener('click',changingBackgroundColorHandler);
 }); 
 
 function addLinkBtnHandler(e) {
@@ -13,10 +16,11 @@ function addLinkBtnHandler(e) {
  	if($('#newLink').is(':visible')) {
 		$('.options').hide();
 	}
-	else if( $('#removeLink').is(':visible') || $('.options').is(':hidden') ){
+	else if( $('#removeLink').is(':visible') || $('#settingsLink').is(':visible') || $('.options').is(':hidden') ){
 		$('.options').show();
 		$('#newLink').show();
-		$('#removeLink').hide();	
+		$('#removeLink').hide();
+		$('#settingsLink').hide();
 	}
 }
 
@@ -37,9 +41,10 @@ function addingLinkHandler(e) {
 
 function removeLinkBtnHandler(e) {
 	e.preventDefault();
-	if( $('#newLink').is(':visible') || $('.options').is(':hidden')  ) {
+	if( $('#newLink').is(':visible') || $('#settingsLink').is(':visible') || $('.options').is(':hidden')  ) {
 		$('.options').show();
 		$('#newLink').hide();
+		$('#settingsLink').hide();
 		$('#removeLink').show();
 		$('#whattodo').text('');
 	}
@@ -61,7 +66,14 @@ function removingLinkHandler(e) {
 	$('#whattodo').text('Click on one of the links below to remove it.');
 	$('ul.links a').hover(
 		function() {$(this).css("color","red");},
-		function() {$(this).css("color","black");}
+		function() {
+			if(localStorage.getItem("font-color")) {
+				$(this).css("color",localStorage.getItem("font-color"));
+			}
+			else {
+				$(this).css("color","black");
+			}
+		}
 	);
 	$('ul.links a').on("click",function(e){
 		e.preventDefault();
@@ -79,4 +91,40 @@ function resetLinksHandler(e) {
 		localStorage.clear();
 		location.reload();
 	}
+}
+
+function settingsBtnHandler(e) {
+	e.preventDefault();
+ 	if($('#settingsLink').is(':visible')) {
+		$('.options').hide();
+	}
+	else if( $('#newLink').is(':visible') || $('#removeLink').is(':visible') || $('.options').is(':hidden') ){
+		$('.options').show();
+		$('#settingsLink').show();
+		$('#removeLink').hide();	
+		$('#newLink').hide();	
+	}
+	else {
+		alert('hi');
+	}
+}
+
+function changingFontColorHandler(e) {
+	e.preventDefault();
+	var color = $('.changeFontColor input[placeholder="font color"]').val();
+	if(color != "") {
+		localStorage.setItem("font-color",color);
+		$('.changeFontColor input[placeholder="font color"]').val('');
+	}
+	location.reload();
+}
+
+function changingBackgroundColorHandler(e) {
+	e.preventDefault();
+	var color = $('.changeBackgroundColor input[placeholder="background color"]').val();
+	if(color != "") {
+		localStorage.setItem("background-color",color);
+		$('.changeBackgroundColor input[placeholder="background color"]').val('');
+	}
+	location.reload();
 }
