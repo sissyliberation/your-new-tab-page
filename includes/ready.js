@@ -17,6 +17,8 @@ $(document).ready(function(){
 
 	// initializing conditions here
 	$('.options').hide();
+	$('.editLinkName').hide();
+	$('.editLinkUrl').hide();
 
 	
 	//display links here

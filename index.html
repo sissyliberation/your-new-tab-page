@@ -59,9 +59,28 @@
       <div class="col-md-12" id="removeLink">
         <hr>
         <span id="whattodo" style="float:left;"></span>
+
         <span id="description">Choose an option: </span>
         <a id="removingLink">[Remove a Link]</a>
+        <a id="editingLink">[Edit a Link]</a>
         <a id="resetLinks">[Clear All]</a>
+        <br/>
+        <div>
+        <form class="navbar-form navbar-left editLinkName" role="form">
+          <div class="form-group">
+            <input type="text" placeholder="new name" class="form-control">
+          </div>
+          <button class="btn" id="editingLinkName">+</button>
+        </form>
+      </div>
+        <div>
+        <form class="navbar-form navbar-left editLinkUrl" role="form">
+          <div class="form-group">
+            <input type="text" placeholder="new url" class="form-control">
+          </div>
+          <button class="btn" id="editingLinkUrl">+</button>
+        </form>
+      </div>
       </div>
       <div class="col-md-12" id="settingsLink">
         <hr>

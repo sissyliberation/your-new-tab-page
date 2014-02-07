@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById("addingLink").addEventListener('click',addingLinkHandler);
 	document.getElementById("removeLinkBtn").addEventListener('click',removeLinkBtnHandler);
 	document.getElementById("removingLink").addEventListener('click',removingLinkHandler);
+	document.getElementById("editingLink").addEventListener('click',editingLinkHandler);
 	document.getElementById("resetLinks").addEventListener('click',resetLinksHandler);
 	document.getElementById("settingsBtn").addEventListener('click',settingsBtnHandler);
 	document.getElementById("changingFontColor").addEventListener('click',changingFontColorHandler);
@@ -82,6 +83,29 @@ function removingLinkHandler(e) {
 		$(this).remove();
 	});
 }
+function editingLinkHandler(e) {
+	e.preventDefault();
+	$('#whattodo').text('Click on one of the links below to edit it.');
+	$('ul.links a').hover(
+		function() {$(this).css("color","red");},
+		function() {
+			if(localStorage.getItem("font-color")) {
+				$(this).css("color",localStorage.getItem("font-color"));
+			}
+			else {
+				$(this).css("color","black");
+			}
+		}
+	);
+	$('ul.links a').on("click",function(e){
+		e.preventDefault();
+		$('.editLinkName').show();
+		$('.editLinkUrl').show();
+		
+		var chosen = $(this).text();
+		$('#whattodo').text('');
+	});
+}
 
 function resetLinksHandler(e) {
 	e.preventDefault();
@@ -103,9 +127,6 @@ function settingsBtnHandler(e) {
 		$('#settingsLink').show();
 		$('#removeLink').hide();	
 		$('#newLink').hide();	
-	}
-	else {
-		alert('hi');
 	}
 }
 

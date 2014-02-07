@@ -29,12 +29,13 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	margin-top:20px;
 }
 
-#removingLink, #resetLinks {
+#removingLink, #editingLink, #resetLinks {
 	color:black;
 }
-#removingLink:hover, #resetLinks:hover {
+#removingLink:hover, #editingLink:hover, #resetLinks:hover {
 	color:red;
 	text-decoration: none;
+	cursor: pointer;
 }
 
 #removeLink {
@@ -57,6 +58,6 @@ html, body, h1, h2, h3, h4, h5, h6 {
 	border-top-color: red;
 }
 
-#settings hr {
-	border-bottom-color: blue;
+#settingsLink hr {
+	border-top-color: blue;
 }
